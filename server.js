@@ -21,10 +21,10 @@ app.use((req, res, next) =>{
     next();
 });
 
-app.use((req, res, next) => {
-    res.render('maintenance.hbs');
-    // next();
-});
+// app.use((req, res, next) => {
+//     res.render('maintenance.hbs');
+//     // next();
+// });
 
 
 
@@ -40,13 +40,23 @@ app.get('/', (req, res) =>{
 });
 
 app.get('/about', (req, res) => {
-    res.send('About page');
+    res.render('about.hbs',{
+        pageTitle: 'About',
+        footer: 'footer'
+    });
 });
+
+app.get('/heroku', (req, res) =>{
+    res.render('heroku.hbs',{
+        pageTitle: 'Heroku',
+        welcomeMessage: `Heroku is a latest deployment service I've already discovered`
+    });
+})
 
 app.get('/bad', (req, res) =>{
     res.send({
         status: 400,
-        symptom: 'Failed to laod a page!'
+        symptom: 'Failed to load a page!'
     });
 });
 
